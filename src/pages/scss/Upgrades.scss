@@ -1,0 +1,154 @@
+@import '/src/vars.scss';
+
+.Upgrades {
+
+    &_money {
+        width: 33%;
+        max-width: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #1A1C29;
+        border-radius: 9px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+
+        &_wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        &_header {
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 600;
+            color: $pc;
+        }
+
+        &_content {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            column-gap: 5px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+    }
+
+    &_buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        column-gap: 8px;
+    }
+
+    &_button {
+        width: 100%;
+        max-width: 150px;
+        display: flex;
+        justify-content: center;
+        column-gap: 6px;
+        align-items: center;
+        background-color: #1A1C29;
+        border-radius: 10px;
+        min-height: 50px;
+        font-size: 13px;
+        font-weight: 700;
+
+        img {
+            filter: grayscale(1) brightness(2);
+        }
+    }
+
+    .selected {
+        color: $pc;
+
+        img {
+            filter: grayscale(0) brightness(1);
+        }
+    }
+
+    &_list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 466px;
+        margin: 0 auto;
+    }
+
+    &_element {
+        margin-top: 10px;
+        background-color: #1A1C29;
+        padding: 15px;
+        border-radius: 15px;
+        width: 100%;
+        display: flex;
+        column-gap: 16px;
+
+        &_content {
+            width: 100%;
+        }
+
+        &_decor {
+            width: 48px;
+        }
+
+        &_lvl {
+            width: 100%;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        &_header {
+            font-size: 12px;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        &_profit {
+            margin-top: 6px;
+            width: 100%;
+
+
+            &_header {
+                font-size: 10px;
+                font-weight: 500;
+                color: #fff8;
+            }
+
+            &_value {
+                margin-top: 2px;
+                font-size: 12px;
+                font-weight: 500;
+                color: #fff8;
+                display: flex;
+                align-items: center;
+                column-gap: 6px;
+            }
+        }
+
+        &_buy {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            column-gap: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 25px;
+            background-color: #252839;
+
+            &_wrapper {
+                display: flex;
+                width: 100%;
+                justify-content: right;
+            }
+        }
+    }
+}

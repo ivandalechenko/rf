@@ -1,0 +1,77 @@
+@import '/src/vars.scss';
+
+.Quest {
+
+    &_decor {
+
+        padding-top: 24px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 100px;
+            filter: drop-shadow(0px 0px 20px $pc)
+        }
+    }
+
+    &_header {
+        margin-top: 24px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &_list {
+        max-width: 466px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 32px;
+    }
+
+    &_label {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    &_element {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        background-color: #1A1C29;
+        column-gap: 12px;
+        padding: 12px 20px;
+        border-radius: 20px;
+
+        &_decor,
+        &_status {
+            min-width: 30px;
+
+            img {
+                max-width: 30px;
+            }
+        }
+
+        &_content {
+            width: 100%;
+
+            &_header {
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            &_price {
+                margin-top: 4px;
+                display: flex;
+                align-items: center;
+                column-gap: 6px;
+                font-size: 12px;
+                font-weight: 600;
+
+                img {
+                    width: 13px;
+                }
+            }
+        }
+    }
+}

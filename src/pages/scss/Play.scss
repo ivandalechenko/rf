@@ -1,0 +1,107 @@
+@import '/src/vars.scss';
+
+.Play {
+    padding: 12px;
+    min-height: 100dvh;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+    background: url('/img/stars.png');
+    background-size: 100vw 100dvh;
+    animation: fly var(--animation-speed) linear infinite;
+
+    @keyframes fly {
+        from {
+            background-position: 0% 0vh;
+        }
+
+        to {
+            background-position: 0% 100dvh;
+        }
+    }
+
+    &_rocket {
+        pointer-events: none;
+    }
+
+    &_rocketAndFlames {
+        transition: transform 200ms;
+    }
+
+    &_flames {
+
+        pointer-events: none;
+        top: 108px;
+        left: -2.1px;
+
+        &_inner {
+            min-width: auto;
+        }
+    }
+
+    &_station {
+        img {
+            min-width: 115vw;
+            object-fit: cover;
+            min-height: 115vh;
+        }
+    }
+
+    &_buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        column-gap: 6px;
+        position: relative;
+        z-index: 3;
+        height: 60px;
+    }
+
+    &_balansir {
+        width: 100%;
+        height: 60px;
+    }
+
+    &_items {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &_button {
+        width: 100%;
+        max-width: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #252839;
+        border-radius: 9px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+
+        &_station {
+            max-width: 70px;
+        }
+
+        &_header {
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 600;
+            color: $pc;
+        }
+
+        &_content {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            column-gap: 5px;
+            font-size: 15px;
+            font-weight: 700;
+
+            @media(max-width: 340px) {
+                font-size: 12px;
+            }
+        }
+    }
+}

@@ -1,0 +1,142 @@
+<svg width="154" height="61" viewBox="0 0 154 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+
+    #l{
+        animation: lAnim 3s infinite;
+    }
+    @keyframes lAnim{
+        0%{
+            transform: translate(0px, 0px);
+        }
+        10%{
+            transform: translate(0px, -10px);
+        }
+        40%{
+            transform: translate(0px, 0px);
+        }
+    }
+    #o{
+        animation: oAnim 3s infinite;
+    }
+    @keyframes oAnim{
+        10%{
+            transform: translate(0px, 0px);
+        }
+        20%{
+            transform: translate(0px, -10px);
+        }
+        50%{
+            transform: translate(0px, 0px);
+        }
+    }
+    #a{
+        animation: aAnim 3s infinite;
+    }
+    @keyframes aAnim{
+        20%{
+            transform: translate(0px, 0px);
+        }
+        30%{
+            transform: translate(0px, -10px);
+        }
+        60%{
+            transform: translate(0px, 0px);
+        }
+    }
+    #d{
+        animation: dAnim 3s infinite;
+    }
+    @keyframes dAnim{
+        30%{
+            transform: translate(0px, 0px);
+        }
+        40%{
+            transform: translate(0px, -10px);
+        }
+        70%{
+            transform: translate(0px, 0px);
+        }
+    }
+    #i{
+        animation: iAnim 3s infinite;
+    }
+    @keyframes iAnim{
+        40%{
+            transform: translate(0px, 0px);
+        }
+        50%{
+            transform: translate(0px, -10px);
+        }
+        80%{
+            transform: translate(0px, 0px);
+        }
+    }
+    #n{
+        animation: nAnim 3s infinite;
+    }
+    @keyframes nAnim{
+        50%{
+            transform: translate(0px, 0px);
+        }
+        60%{
+            transform: translate(0px, -10px);
+        }
+        90%{
+            transform: translate(0px, 0px);
+        }
+    }
+    #g{
+        animation: gAnim 3s infinite;
+    }
+    @keyframes gAnim{
+        60%{
+            transform: translate(0px, 0px);
+        }
+        70%{
+            transform: translate(0px, -10px);
+        }
+        100%{
+            transform: translate(0px, 0px);
+        }
+    }
+
+</style>
+<path id='l' d="M12.3803 53V28.8448H19.9029V46.9612H27.4945V53H12.3803Z" fill="url(#paint0_linear_285_1339)"/>
+<path id='o' d="M39.9396 34.9181H36.9374V46.9612H39.9396V34.9181ZM44.46 53H32.417C30.6226 53 29.3803 51.7577 29.3803 49.9979V31.8469C29.3803 30.0871 30.6226 28.8448 32.417 28.8448H44.46C46.2544 28.8448 47.4967 30.0871 47.4967 31.8469V49.9979C47.4967 51.7577 46.2544 53 44.46 53Z" fill="url(#paint1_linear_285_1339)"/>
+<path id='a' d="M58.248 42.0957H60.4565L59.7663 34.9181H58.9381L58.248 42.0957ZM53.0719 28.8448H65.6326L69.0143 49.9979V53H61.4572L61.0086 48.1345H57.6959L57.2128 53H49.6901V49.9979L53.0719 28.8448Z" fill="url(#paint2_linear_285_1339)"/>
+<path id='d' d="M78.9029 34.9181V46.9612H81.9396V34.9181H78.9029ZM86.46 53H71.3803V28.8448H86.46C88.2199 28.8448 89.4622 30.0871 89.4622 31.8469V49.9979C89.4622 51.7577 88.2199 53 86.46 53Z" fill="url(#paint3_linear_285_1339)"/>
+<path id='i' d="M99.9029 53H92.3803V28.8448H99.9029V53Z" fill="url(#paint4_linear_285_1339)"/>
+<path id='n' d="M114.906 40.0252H115.527L114.526 31.8469V28.8448H121.497V53H113.491L109.937 41.8541H109.35L110.316 49.9979V53H103.38V28.8448H111.386L114.906 40.0252Z" fill="url(#paint5_linear_285_1339)"/>
+<path id='g' d="M127.417 28.8448H142.359V31.8469L141.151 34.9181H131.937V46.9612H134.94V38.852H142.497V53H127.417C125.623 53 124.38 51.7577 124.38 49.9979V31.8469C124.38 30.0871 125.623 28.8448 127.417 28.8448Z" fill="url(#paint6_linear_285_1339)"/>
+<defs>
+<linearGradient id="paint0_linear_285_1339" x1="11" y1="20" x2="29.1274" y2="20.5218" gradientUnits="userSpaceOnUse">
+<stop stop-color="#30BBEE"/>
+<stop offset="1" stop-color="#58A1F2"/>
+<stop offset="1.0001" stop-color="#C659FC"/>
+</linearGradient>
+<linearGradient id="paint1_linear_285_1339" x1="28" y1="20" x2="50.3829" y2="20.7959" gradientUnits="userSpaceOnUse">
+<stop stop-color="#57A2F2"/>
+<stop offset="1" stop-color="#629BF3"/>
+</linearGradient>
+<linearGradient id="paint2_linear_285_1339" x1="49" y1="20" x2="71.3829" y2="20.7959" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5B9FF2"/>
+<stop offset="1" stop-color="#7091F4"/>
+</linearGradient>
+<linearGradient id="paint3_linear_285_1339" x1="70" y1="20" x2="92.3829" y2="20.7959" gradientUnits="userSpaceOnUse">
+<stop stop-color="#798CF5"/>
+<stop offset="1" stop-color="#8087F6"/>
+</linearGradient>
+<linearGradient id="paint4_linear_285_1339" x1="91" y1="20" x2="102.735" y2="20.2186" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8B80F7"/>
+<stop offset="1" stop-color="#927CF7"/>
+</linearGradient>
+<linearGradient id="paint5_linear_285_1339" x1="102" y1="20" x2="124.383" y2="20.7959" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9778F8"/>
+<stop offset="1" stop-color="#A86DFA"/>
+</linearGradient>
+<linearGradient id="paint6_linear_285_1339" x1="123" y1="20" x2="145.383" y2="20.7959" gradientUnits="userSpaceOnUse">
+<stop stop-color="#AD6AFA"/>
+<stop offset="1" stop-color="#BB61FB"/>
+</linearGradient>
+</defs>
+</svg>

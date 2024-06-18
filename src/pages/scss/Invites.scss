@@ -1,0 +1,120 @@
+@import '/src/vars.scss';
+
+.Invites {
+    &_header {
+        font-size: 26px;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 48px;
+    }
+
+    &_subHeader {
+        margin-top: 16px;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &_tgDifferentElements {
+        margin-top: 48px;
+    }
+
+    &_tgDifferentElement {
+        width: 100%;
+        max-width: 466px;
+        margin: 0 auto;
+        padding: 18px 20px;
+        background-color: #1A1C29;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        margin-top: 8px;
+
+        &_content {
+            &_header {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            &_value {
+                flex-wrap: wrap;
+                margin-top: 6px;
+                font-size: 12px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                column-gap: 6px;
+                color: $pc;
+            }
+        }
+
+    }
+
+    &_more {
+        width: fit-content;
+        font-weight: 870;
+        font-size: 18px;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+
+        &_wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+        }
+    }
+
+    &_list {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto
+    }
+
+    &_label {
+        margin-top: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    &_count {
+        margin-top: 12px;
+        padding: 24px 32px;
+        width: 100%;
+        background-color: #1A1C29;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &_buttons {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+        margin-top: 8px;
+        display: flex;
+        column-gap: 12px;
+    }
+
+    &_button {
+        min-width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 20px;
+
+        &L {
+            width: 100%;
+        }
+    }
+}

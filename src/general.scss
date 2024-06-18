@@ -1,0 +1,28 @@
+@import '/src/vars.scss';
+
+body {
+    background: #12111C;
+}
+
+#root {
+    width: 100%;
+    overflow: hidden;
+}
+
+.page {
+
+    background: url('/img/stars.png');
+    // background: #fff3;
+    width: 100%;
+    padding: 12px;
+    padding-bottom: 100px;
+    min-height: 100dvh;
+}
+
+.linear-gradient {
+    background: linear-gradient(135deg, #30BBEE, #C659FC);
+}
+
+.dnone {
+    display: none !important;
+}
