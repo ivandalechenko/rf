@@ -18,8 +18,16 @@ function app() {
   const [afkFarm, setafkFarm] = useState(0);
 
   useEffect(() => {
-    const token = localStorage.getItem('token') || ''
-    if (token) authStore.checkAuth()
+
+    // const token = localStorage.getItem('token') || ''
+    // if (token) { authStore.checkAuth() }
+    // else {authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)}
+    // window.Telegram.WebApp.expand()
+
+    window.Telegram.WebApp.expand()
+    authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)
+
+
   }, [])
 
 
@@ -67,6 +75,7 @@ function app() {
           :
 
           <div className='App_auth'>
+            {/* {JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user.id)} */}
             залогиньтесь
             <input type="text" value={login} onChange={(e) => { setlogin(e.target.value) }} />
             <button style={{ color: "black" }} onClick={() => {

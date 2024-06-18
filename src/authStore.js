@@ -60,6 +60,7 @@ class AuthStore {
             this.setUser(response.data.user);
         } catch (e) {
             console.log(e);
+            localStorage.removeItem('token');
             this.logout()
         }
     }

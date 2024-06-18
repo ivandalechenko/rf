@@ -2,7 +2,7 @@
 
 .Play {
     padding: 12px;
-    min-height: 100dvh;
+    min-height: calc(100dvh);
     display: flex;
     align-content: space-between;
     flex-wrap: wrap;

@@ -40,12 +40,12 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
             if (touchPoints[touchPoints.length - 1].x > rocketLeft && touchPoints[touchPoints.length - 1].x < rocketRight && touchPoints[touchPoints.length - 1].y > rocketTop && touchPoints[touchPoints.length - 1].y < rocketBot) {
                 if (insideRocket === false || insideRocket === 'notSet') {
                     setinsideRocket(true)
-                    console.log('swap to true');
+                    // console.log('swap to true');
                 }
             } else {
                 if (insideRocket === true) {
                     setinsideRocket(false)
-                    console.log('swap to false');
+                    // console.log('swap to false');
                 }
             }
         }
@@ -73,6 +73,16 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
     };
 
     // КАНВАС КОНЕЦ
+    const triggerVibration = (pattern) => {
+        if (navigator.vibrate) {
+            navigator.vibrate(pattern);
+        }
+        try {
+            window.Telegram.WebApp.HapticFeedback.impactOccurred("medium")
+        } catch (error) {
+
+        }
+    };
 
     useEffect(() => {
         return () => {
@@ -87,6 +97,7 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
 
     const registerTap = (newCargo, newCargoWeight) => {
         setRocketBigger()
+        triggerVibration(100);
         newCargoRef.current = newCargo;
         newCargoWeightRef.current = newCargoWeight;
         tapCount.current += 1;
@@ -141,7 +152,7 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
         // console.log('user');
         // console.log(user);
         // console.log('res');
-        console.log(resources);
+        // console.log(resources);
         // console.log(`-`);
         // console.log(`Уровень копания: ${mLevel} Уровень удачи: ${lLevel}`);
         for (let i = 0; i < user.minePower; i++) {
@@ -152,16 +163,16 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
                     await updateUserCargoAndFuel(resourceType, 1);
                 } else {
                     let randForThisSwipe = getRandomValue(1, 100);
-                    console.log(`Зарандомил число ${randForThisSwipe}`);
+                    // console.log(`Зарандомил число ${randForThisSwipe}`);
                     // Цикл проходки по ресурсам
                     for (let resourceLevel = 1; resourceLevel <= mLevel + 1; resourceLevel++) {
 
                         const resource = resources.find(obj => obj['level'] === resourceLevel);
                         // console.log("resource");
-                        console.log(resource);
+                        // console.log(resource);
                         const resourceLuckLevelsList = resource.canMineLevel.find(obj => obj['canMineLevel'] === mLevel);
                         // console.log("resourceLuckLevelsList");
-                        console.log(resourceLuckLevelsList);
+                        // console.log(resourceLuckLevelsList);
                         const chanceForThisResource = resourceLuckLevelsList.luckLevel.find(obj => obj['luckLevel'] === lLevel);
                         const percent = chanceForThisResource.percent
 
@@ -169,10 +180,10 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
                         // console.log(chanceForThisResource);
                         randForThisSwipe -= percent
 
-                        console.log(`Шанс на получение "${resource.name}" - ${percent}%, осталось шансов ${randForThisSwipe}`);
+                        // console.log(`Шанс на получение "${resource.name}" - ${percent}%, осталось шансов ${randForThisSwipe}`);
                         if (randForThisSwipe <= 0) {
-                            console.log(`Выпало "${resource.name}"`);
-                            console.log(`-`);
+                            // console.log(`Выпало "${resource.name}"`);
+                            // console.log(`-`);
                             await updateUserCargoAndFuel(resourceLevel, 1);
                             resourceType = resourceLevel;
                             resourceLevel = 999;
