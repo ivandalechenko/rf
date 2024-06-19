@@ -23,9 +23,12 @@ function app() {
     // if (token) { authStore.checkAuth() }
     // else {authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)}
     // window.Telegram.WebApp.expand()
+    try {
+      window.Telegram.WebApp.expand()
+      authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)
+    } catch (error) {
 
-    window.Telegram.WebApp.expand()
-    authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)
+    }
 
 
   }, [])

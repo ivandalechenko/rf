@@ -4,11 +4,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
+import { observer } from 'mobx-react';
 
 import { useNavigate } from 'react-router-dom';
-
+import api from '../api';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import authStore from '../authStore';
 
 const Startup = (props) => {
     const [showfirst, setshowfirst] = useState(true);
@@ -18,10 +20,19 @@ const Startup = (props) => {
     useEffect(() => {
         if (slide > 2) {
             setTimeout(() => {
+                api.post('/user/comleteTraining')
                 navigate('/play')
-            }, 3000);
+            }, 2000);
         }
     }, [slide])
+
+    useEffect(() => {
+        if (authStore.user.completedTraining) {
+            navigate('/play')
+        }
+    }, [])
+
+
 
     return (
         <>
@@ -116,4 +127,4 @@ const Startup = (props) => {
     )
 }
 
-export default Startup
+export default observer(Startup)
