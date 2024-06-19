@@ -30,9 +30,9 @@ class AuthStore {
 
 
 
-    async login(tgUserId) {
+    async login(tgUserId, r = 0) {
         try {
-            const response = await api.post('/user/login', { tgId: tgUserId })
+            const response = await api.post('/user/login', { tgId: tgUserId, r })
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true);
             this.setUser(response.data.user);

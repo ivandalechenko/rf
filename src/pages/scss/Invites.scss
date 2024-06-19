@@ -31,6 +31,11 @@
         column-gap: 16px;
         margin-top: 8px;
 
+        &_decor {
+            display: flex;
+            align-items: center;
+        }
+
         &_content {
             &_header {
                 font-size: 16px;

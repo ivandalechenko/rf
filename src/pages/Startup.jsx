@@ -112,13 +112,13 @@ const Startup = (props) => {
                 </div>
                 <div className='Startup_media'>
                     <a href="https://google.com" className='Startup_media_element'>
-                        <img src='/img/mediaPlaceholder.svg' alt='decor' />
+                        <img src='/img/media/tg.svg' alt='decor' />
                     </a>
                     <a href="https://google.com" className='Startup_media_element'>
-                        <img src='/img/mediaPlaceholder.svg' alt='decor' />
+                        <img src='/img/media/yt.svg' alt='decor' />
                     </a>
                     <a href="https://google.com" className='Startup_media_element'>
-                        <img src='/img/mediaPlaceholder.svg' alt='decor' />
+                        <img src='/img/media/x.svg' alt='decor' />
                     </a>
                 </div>
             </div>

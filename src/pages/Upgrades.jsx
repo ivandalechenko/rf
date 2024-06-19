@@ -54,19 +54,19 @@ const Upgrades = (props) => {
                 </div>
             </div>
             <div className='Upgrades_buttons'>
-                <div className={`Upgrades_button ${page == 'upgrades' && 'selected'}`} onClick={() => { setpage('upgrades') }}
+                {/* <div className={`Upgrades_button ${page == 'upgrades' && 'selected'}`} onClick={() => { setpage('upgrades') }}
                 >
                     <img src='/img/icons/upgrades2.svg' alt='decor' />
                     Upgrades
-                </div>
+                </div> */}
                 {/* <div className={`Upgrades_button ${page == 'skins' && 'selected'}`} onClick={() => { setpage('skins') }}>
                     <img src='/img/icons/skins.svg' alt='decor' />
                     Skins
                 </div> */}
-                <div className={`Upgrades_button ${page == 'boost' && 'selected'}`} onClick={() => { setpage('boost') }}>
+                {/* <div className={`Upgrades_button ${page == 'boost' && 'selected'}`} onClick={() => { setpage('boost') }}>
                     <img src='/img/icons/boost.svg' alt='decor' />
                     Boost
-                </div>
+                </div> */}
             </div>
             <div className='Upgrades_list'>
                 {

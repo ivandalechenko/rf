@@ -10,12 +10,12 @@ const Navigation = ({ isBack, backFunc }) => {
             </div>
             <div className='Navigation_delimeter'></div>
             <div className='Navigation'>
-                <NavLink to={'/quest'} className='Navigation_element'>
+                {/* <NavLink to={'/quest'} className='Navigation_element'>
                     <img src='/img/icons/quest.svg' alt='decor' />
                     <div className='Navigation_text'>
                         Quest
                     </div>
-                </NavLink>
+                </NavLink> */}
                 <NavLink to={'/play'} className='Navigation_element'>
                     <img src='/img/icons/play.svg' alt='decor' />
                     <div className='Navigation_text'>

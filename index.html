@@ -10,8 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <script>
-    // WebView
+  <script>// WebView
     (function () {
       var eventHandlers = {};
 
@@ -299,7 +298,7 @@
       var WebApp = {};
       var webAppInitData = '', webAppInitDataUnsafe = {};
       var themeParams = {}, colorScheme = 'light';
-      var webAppVersion = '6.0';
+      var webAppVersion = '7.0';
       var webAppPlatform = 'unknown';
 
       if (initParams.tgWebAppData && initParams.tgWebAppData.length) {
@@ -1678,6 +1677,7 @@
           throw Error('WebAppInlineModeDisabled');
         }
         query = query || '';
+
         if (query.length > 256) {
           console.error('[Telegram.WebApp] Inline query is too long', query);
           throw Error('WebAppInlineQueryInvalid');
@@ -1996,8 +1996,7 @@
       WebView.postEvent('web_app_request_theme');
       WebView.postEvent('web_app_request_viewport');
 
-    })();
-  </script>
+    })();</script>
 </head>
 
 <body>

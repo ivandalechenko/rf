@@ -25,7 +25,7 @@ function app() {
     // window.Telegram.WebApp.expand()
     try {
       window.Telegram.WebApp.expand()
-      authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)
+      authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id, window.Telegram.WebApp.initDataUnsafe.start_param)
     } catch (error) {
 
     }
@@ -58,6 +58,7 @@ function app() {
       {
         authStore.isAuth ?
           <>
+            {/* {JSON.stringify(window.Telegram.)} */}
             {authStore.isLoading && <Loader></Loader>}
             {afkFarm > 0 && <Modal afk={afkFarm} hideModal={hideAfk}></Modal>}
             <Router>
@@ -67,11 +68,11 @@ function app() {
                 <Route path="/upgrades" element={<Upgrades></Upgrades>} />
                 <Route path="/quest" element={<Quest></Quest>} />
                 <Route path="/invites" element={<Invites></Invites>} />
-                <Route path="/logout" element={<div>
+                {/* <Route path="/logout" element={<div>
                   <button style={{ background: 'black', color: "white" }} onClick={() => {
                     authStore.logout();
                   }}>logout</button>
-                </div>} />
+                </div>} /> */}
               </Routes>
             </Router>
           </>

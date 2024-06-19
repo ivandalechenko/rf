@@ -155,6 +155,16 @@
         display: flex;
         justify-content: center;
         column-gap: 35px;
+
+        &_element {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 32px;
+            background-color: #1A1C29;
+        }
     }
 
     .onone {
