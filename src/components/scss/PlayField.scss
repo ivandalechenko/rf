@@ -10,8 +10,15 @@
     display: flex;
     justify-content: center;
 
+    touch-action: none !important;
+    -webkit-touch-callout: none;
+
+
     &_resource {
         top: -50px;
+        touch-action: none !important;
+        -webkit-touch-callout: none;
+
     }
 
     @keyframes resourceAnim {
@@ -40,4 +47,7 @@
     top: 0;
     left: 0;
     pointer-events: none;
+    touch-action: none !important;
+    -webkit-touch-callout: none;
+
 }

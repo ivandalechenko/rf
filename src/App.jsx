@@ -24,6 +24,7 @@ function app() {
     // else {authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id)}
     // window.Telegram.WebApp.expand()
     try {
+      window.Telegram.WebApp.onEvent('viewportChanged', () => WebApp.expand())
       window.Telegram.WebApp.expand()
       authStore.login(window.Telegram.WebApp.initDataUnsafe.user.id, window.Telegram.WebApp.initDataUnsafe.start_param)
     } catch (error) {

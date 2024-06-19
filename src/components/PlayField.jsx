@@ -51,10 +51,29 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
         }
 
     }, [touchPoints]);
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas before drawing
+
+        for (let i = 0; i < touchPoints.length - 1; i++) {
+            const startPoint = touchPoints[i];
+            const endPoint = touchPoints[i + 1];
+            const alpha = (i + 1) / touchPoints.length; // Calculate alpha based on point position
+            context.strokeStyle = `rgba(255, 255, 255, ${alpha})`; // Adjust color and alpha
+            context.beginPath();
+            context.moveTo(startPoint.x, startPoint.y);
+            context.lineTo(endPoint.x, endPoint.y);
+            context.stroke();
+            context.closePath();
+        }
+    }, [touchPoints]);
 
     const handleTouchStart = (e) => {
         const touch = e.targetTouches[0];
         setTouchPoints([{ x: touch.clientX, y: touch.clientY }]);
+        e.preventDefault();
+        e.stopPropagation();
     };
 
     const handleTouchMove = (e) => {
@@ -62,7 +81,10 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
         setTouchPoints((prevPoints) => [
             ...prevPoints,
             { x: touch.clientX, y: touch.clientY }
-        ]);
+        ].slice(-20));
+        e.preventDefault();
+        e.stopPropagation();
+        window.Telegram.WebApp.expand()
     };
 
     const handleTouchEnd = () => {
@@ -239,6 +261,12 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
                 height={window.innerHeight}
                 className="swipe-canvas"
             />
+            {/* <canvas
+                ref={canvasRef}
+                width={100}
+                height={100}
+                className="swipe-canvas"
+            /> */}
         </div>
     );
 };

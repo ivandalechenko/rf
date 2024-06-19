@@ -80,7 +80,7 @@ const Invites = (props) => {
             </div>
             <div className='Invites_buttons'>
                 <div className='Invites_button Invites_buttonL linear-gradient' onClick={() => {
-                    window.Telegram.WebApp.switchInlineQuery(`\nhttps://t.me/rockettapbot/game?startapp=${authStore.user.tgId} \n\nГо в ракетку `, [])
+                    window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?text=https://t.me/rockettapbot/game?startapp=${authStore.user.tgId}\n\nГо в ракетку `);
                 }}>
                     Пригласить друга
                 </div>
