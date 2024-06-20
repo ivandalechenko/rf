@@ -46,34 +46,28 @@ const Startup = (props) => {
                 >
                     <SwiperSlide>
                         <div className={`Startup_slideHeader ${slide != 0 && ' onone'}`}>
-                            Кликайте на экран и зарабатывайте монеты
+                            Привет! Добро пожаловать в Orbiton 🚀
                         </div>
                         <div className={`Startup_slideSubheader ${slide != 0 && ' onone'}`}>
-                            Вы можете использовать бусты и хитрые стратегии
+                            Садись в свой космический корабль, и стань самым богатым во вселенной!
                         </div>
                         <img src='/img/startupElement1.png' alt='decor' />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className={`Startup_slideHeader ${slide != 1 && ' onone'}`}>
-                            Улучшайте свою биржу
-                        </div>
-                        <div className={`Startup_slideSubheader ${slide != 1 && ' onone'}`}>
-                            Используйте карточки, чтобы увеличить свой пассивный доход
+                            Слайди по экрану, собирай ресурсы, прокачивай свой корабль.
                         </div>
                         <img src='/img/startupElement2.png' alt='decor' />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className={`Startup_slideHeader ${slide != 2 && ' onone'}`}>
-                            Приглашайте друзей и получайте бонусы вместе
-                        </div>
-                        <div className={`Startup_slideSubheader ${slide != 2 && ' onone'}`}>
-                            Монеты получите и вы, и ваш друг
+                            Присоединись к межпланетной экосистеме, мы - больше чем просто игра.
                         </div>
                         <img src='/img/startupElement3.png' alt='decor' />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className={`Startup_slideHeader ${slide != 3 && ' onone'}`}>
-                            Используйте монеты для получения вознаграждения при листинге токенов
+                            Не забывай приглашать друзей — зови их в игру и получай крутые бонусы!
                         </div>
                         <img src='/img/startupElement4.png' alt='decor' />
                     </SwiperSlide>
