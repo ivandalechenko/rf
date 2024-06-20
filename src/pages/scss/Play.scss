@@ -22,10 +22,14 @@
 
     &_rocket {
         pointer-events: none;
+
+        img {
+            width: 160px;
+        }
     }
 
     &_rageTimer {
-        top: 14px;
+        top: 17px;
         font-weight: 700;
         opacity: 0.6;
     }

@@ -63,13 +63,13 @@ const Startup = (props) => {
                         <div className={`Startup_slideHeader ${slide != 2 && ' onone'}`}>
                             Присоединись к межпланетной экосистеме, мы - больше чем просто игра.
                         </div>
-                        <img src='/img/startupElement3.png' alt='decor' />
+                        <img src='/img/startupElement4.png' alt='decor' />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className={`Startup_slideHeader ${slide != 3 && ' onone'}`}>
                             Не забывай приглашать друзей — зови их в игру и получай крутые бонусы!
                         </div>
-                        <img src='/img/startupElement4.png' alt='decor' />
+                        <img src='/img/startupElement3.png' alt='decor' />
                     </SwiperSlide>
                 </Swiper>
                 <div className='Startup_dark'>
@@ -90,11 +90,11 @@ const Startup = (props) => {
                     </div>
                 </div>
                 <div className='Startup_header'>
-                    НАЗВАНИЕ ПРИЛОЖЕНИЯ
+                    Welcome to Orbiton
                 </div>
-                <div className='Startup_subheader'>
+                {/* <div className='Startup_subheader'>
                     will be launched
-                </div>
+                </div> */}
                 <div className='Startup_where linear-gradient'>
                     on TON
                 </div>

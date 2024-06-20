@@ -52,6 +52,7 @@ const Upgrades = (props) => {
         ]
         if (user.lastFuelBoost) {
             const timeElapsed = now - lastFuelBoost;
+            console.log(timeElapsed);
             if (timeElapsed > 24 * 60 * 60 * 1000) {
                 boosts[0].avaliable = true;
             }

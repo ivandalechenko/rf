@@ -7,6 +7,7 @@ class AuthStore {
     lastUserUpdate = null; // Поле для хранения времени последнего обновления пользователя
     isLoading = false;
     afkFarm = 0;
+    isTimerUpdataderSetted = false;
 
     setUser(user) {
         // console.log('Движ');
@@ -19,10 +20,13 @@ class AuthStore {
         const now = Date.now();
         const lastRageTime = new Date(user.lastRage)
         const lastRage = lastRageTime.getTime();
-        if (now < lastRage + 30000) {
-            setTimeout(() => {
-                this.setLastUserUpdate()
-            }, 1000);
+        if (!this.isTimerUpdataderSetted) {
+            this.isTimerUpdataderSetted = false;
+            if (now < lastRage + 30000) {
+                setTimeout(() => {
+                    this.setLastUserUpdate()
+                }, 1000);
+            }
         }
     }
 
@@ -35,6 +39,8 @@ class AuthStore {
             setTimeout(() => {
                 this.setLastUserUpdate()
             }, 1000);
+        } else {
+            this.isTimerUpdataderSetted = false
         }
     }
 
