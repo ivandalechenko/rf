@@ -19,6 +19,9 @@
         touch-action: none !important;
         -webkit-touch-callout: none;
 
+        img {
+            width: 60px;
+        }
     }
 
     @keyframes resourceAnim {

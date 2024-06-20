@@ -5,7 +5,7 @@ import resourceStore from '../resourceStore';
 import { observer } from 'mobx-react';
 import api from '../api';
 
-const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
+const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation }) => {
     const [touchPoints, setTouchPoints] = useState([]);
     const [viewResources, setviewResources] = useState([]);
     const canvasRef = useRef(null);
@@ -112,11 +112,19 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
         };
     }, []);
 
-    const registerTap = (newCargo, newCargoWeight) => {
+    useEffect(() => {
+        if (isStation) {
+            registerTap(0, 0, true)
+        }
+    }, [isStation])
 
-        newCargoRef.current = newCargo;
-        newCargoWeightRef.current = newCargoWeight;
-        tapCount.current += 1;
+    const registerTap = (newCargo, newCargoWeight, permanent = false) => {
+
+        if (!permanent) {
+            newCargoRef.current = newCargo;
+            newCargoWeightRef.current = newCargoWeight;
+            tapCount.current += 1;
+        }
         // console.log('Регистрирую тап');
         // console.log('lastTapTimeout перед установкой:', lastTapTimeout.current);
         if (lastTapTimeout.current) {
@@ -130,7 +138,7 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
             tapCount.current = 0;
             lastTapTimeout.current = null;
             // console.log('lastTapTimeout.currentпосле отправки:', lastTapTimeout.current);
-        }, 1000);
+        }, permanent ? 1 : 1000);
         // console.log('lastTapTimeout.currentпосле установки:', lastTapTimeout.current);
     }
 

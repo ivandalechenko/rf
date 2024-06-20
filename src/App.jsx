@@ -13,7 +13,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Loader from './components/Loader'
 import Modal from './components/Modal'
-import { Flip, ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function app() {
@@ -64,7 +64,7 @@ function app() {
             {authStore.isLoading && <Loader></Loader>}
             {afkFarm > 0 && <Modal afk={afkFarm} hideModal={hideAfk}></Modal>}
             <ToastContainer
-              position="top-center"
+              position="bottom-center"
               autoClose={4000}
               // hideProgressBar
               newestOnTop={false}
@@ -74,7 +74,7 @@ function app() {
               draggable
               pauseOnHover={false}
               theme="dark"
-              transition={Flip} />
+              transition={Slide} />
             <Router>
               <Routes>
                 <Route path="/" element={<Startup></Startup>} />

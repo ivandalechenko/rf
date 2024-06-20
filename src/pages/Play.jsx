@@ -75,7 +75,11 @@ const Play = observer((props) => {
 
     useEffect(() => {
         // console.log('ОБНОВЛЯЮ FUEL');
-        setfuel(Math.floor(authStore.user.fuel))
+        if (authStore.user.fuel > 0) {
+            setfuel(Math.floor(authStore.user.fuel))
+        } else {
+            setfuel(0)
+        }
         setmaxFuel(Math.floor(authStore.user.maxFuel))
 
         const now = Date.now();
@@ -132,13 +136,15 @@ const Play = observer((props) => {
                     setshowModal(true)
                 }
 
-                const res = await api.post("/user/sell");
                 setweight(0)
                 setflameStatus(0)
-                authStore.setUser(res.data)
-                setbalance(res.data.balance)
                 setisFly(false)
                 setspeed(0)
+                setTimeout(async () => {
+                    const res = await api.post("/user/sell");
+                    authStore.setUser(res.data)
+                    setbalance(res.data.balance)
+                }, 100);
             }
         }
         arriveToStation()
@@ -236,7 +242,7 @@ const Play = observer((props) => {
                         : <></>}
                 </div>
                 <div className="free_img" style={{ opacity: isStation ? 0 : 1 }}>
-                    <PlayField setRocketBigger={setRocketBigger} startFly={startFly} setweight={setweight} setfuel={setfuel} ></PlayField>
+                    <PlayField setRocketBigger={setRocketBigger} startFly={startFly} setweight={setweight} setfuel={setfuel} isStation={isStation} ></PlayField>
                 </div>
 
 

@@ -68,8 +68,9 @@ const Upgrades = (props) => {
             boosts[1].avaliable = true;
         }
 
-        // всегда включает рейдж
-        // boosts[1].avaliable = true;
+        // всегда включает бусты
+        boosts[0].avaliable = true;
+        boosts[1].avaliable = true;
 
         setboosts(boosts)
     }
