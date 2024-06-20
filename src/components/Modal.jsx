@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import authStore from '../authStore';
 import api from '../api';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Modal = ({ children, hideModal, resources, earned, upgrade, afk }) => {
     const [hider, sethider] = useState(false);
@@ -14,15 +16,28 @@ const Modal = ({ children, hideModal, resources, earned, upgrade, afk }) => {
             }, 500);
         }
     }, [hider])
+    const navigate = useNavigate()
     const user = authStore.user;
-
     const buy = async () => {
         authStore.setLoader(true);
-        const res = await api.post('/upgrade/buy', { slugToBuy: upgrade.slug })
+        let res;
+        if (upgrade.slug == 'fuel 1') {
+            res = await api.post('/user/fuelBoost')
+            toast.success('Вы успешно активировали усиление')
+        } else if (upgrade.slug == 'rage 1') {
+            res = await api.post('/user/rage')
+            toast.success('Вы успешно активировали усиление')
+        } else {
+            res = await api.post('/upgrade/buy', { slugToBuy: upgrade.slug })
+            toast.success('Вы успешно купили улучшение')
+        }
         authStore.setUser(res.data);
         await upgrade.getUpgrades();
         sethider(true);
         authStore.setLoader(false);
+        if (upgrade.slug == 'rage 1') {
+            navigate('/play')
+        }
     }
 
     return (
@@ -71,23 +86,29 @@ const Modal = ({ children, hideModal, resources, earned, upgrade, afk }) => {
                             <div className='Modal_subHeader mt16'>
                                 {upgrade.description}
                             </div>
-                            <div className='Modal_price mt16'>
-                                <img src='/img/icons/money.svg' alt='decor' />
-                                {upgrade.price}
-                                <span>•</span>
-                                {upgrade.level} lvl
-                            </div>
+                            {upgrade.price > 0 &&
+                                <div className='Modal_price mt16'>
+                                    <img src='/img/icons/money.svg' alt='decor' />
+                                    {upgrade.price}
+                                    <span>•</span>
+                                    {upgrade.level} lvl
+                                </div>
+                            }
                         </div>
                         {
                             user.balance >= upgrade.price
                                 ? <div className='Modal_bot'>
                                     <div className='Modal_buttonColored mt32' onClick={() => { buy() }}>
-                                        Buy
+                                        {upgrade.price > 0 ? <>
+                                            Buy
+                                        </> : <>
+                                            Activate
+                                        </>}
                                     </div>
                                 </div>
                                 : <div className='Modal_bot'>
                                     <div className='Modal_buttonGray mt32'>
-                                        Insufficient funds
+                                        Недостаточно денег
                                     </div>
                                 </div>
                         }

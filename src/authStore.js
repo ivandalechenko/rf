@@ -14,6 +14,28 @@ class AuthStore {
         this.afkFarm = user.autoFarmed;
         this.lastUserUpdate = Date.now(); // Записываем текущее время при обновлении пользователя
         this.startIdleTimeout(); // Запускаем таймаут для проверки бездействия
+
+
+        const now = Date.now();
+        const lastRageTime = new Date(user.lastRage)
+        const lastRage = lastRageTime.getTime();
+        if (now < lastRage + 30000) {
+            setTimeout(() => {
+                this.setLastUserUpdate()
+            }, 1000);
+        }
+    }
+
+    setLastUserUpdate() {
+        this.lastUserUpdate = Date.now(); // Записываем текущее время при обновлении пользователя
+        const now = Date.now();
+        const lastRageTime = new Date(this.user.lastRage)
+        const lastRage = lastRageTime.getTime();
+        if (now < lastRage + 30000) {
+            setTimeout(() => {
+                this.setLastUserUpdate()
+            }, 1000);
+        }
     }
 
     constructor() {

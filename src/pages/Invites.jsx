@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import api from '../api';
 import { useState } from 'react';
 import authStore from '../authStore';
+import { toast } from 'react-toastify';
 
 const Invites = (props) => {
     const [refCount, setrefCount] = useState(0);
@@ -80,11 +81,15 @@ const Invites = (props) => {
             </div>
             <div className='Invites_buttons'>
                 <div className='Invites_button Invites_buttonL linear-gradient' onClick={() => {
-                    window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?text=https://t.me/rockettapbot/game?startapp=${authStore.user.tgId}\n\nГо в ракетку `);
+                    const invText = `https://t.me/share/url?text=` + encodeURIComponent(`https://t.me/rockettapbot/game?startapp=${authStore.user.tgId}\n\nГо в ракетку`)
+                    window.Telegram.WebApp.openTelegramLink(invText);
                 }}>
                     Пригласить друга
                 </div>
-                <div className='Invites_button linear-gradient'>
+                <div className='Invites_button linear-gradient' onClick={() => {
+                    navigator.clipboard.writeText(`https://t.me/rockettapbot/game?startapp=${authStore.user.tgId}`);
+                    toast.success('Ссылка успешно скопирована')
+                }}>
                     <img src='/img/icons/copy.svg' alt='decor' />
                 </div>
             </div>

@@ -24,6 +24,12 @@
         pointer-events: none;
     }
 
+    &_rageTimer {
+        top: 14px;
+        font-weight: 700;
+        opacity: 0.6;
+    }
+
     &_rocketAndFlames {
         transition: transform 200ms;
     }
@@ -36,6 +42,22 @@
 
         &_inner {
             min-width: auto;
+
+            &_1 {
+                left: -25px;
+                top: 10px;
+            }
+
+            &_2 {
+                left: 24px;
+                top: 10px;
+            }
+
+            &_L {
+                left: -2.2px;
+                top: 30px;
+                transform: scale(2)
+            }
         }
     }
 
@@ -49,10 +71,13 @@
 
     &_buttons {
         width: 100%;
+        top: 15px;
+        left: 0px;
+        padding: 0px 15px;
         display: flex;
         justify-content: center;
         column-gap: 6px;
-        position: relative;
+        position: fixed;
         z-index: 3;
         height: 60px;
     }
@@ -66,7 +91,7 @@
         width: 100%;
 
         display: flex;
-        height: 70vh;
+        height: 100vh;
         justify-content: center;
         align-items: center;
         touch-action: none !important;

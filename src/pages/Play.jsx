@@ -1,9 +1,7 @@
 import React from 'react';
 import './scss/Play.scss';
 import Navigation from '../components/Navigation'
-// import { useState } from 'react';
 import { useState } from 'react';
-import { useRive, Rive, Layout, Fit, Alignment } from '@rive-app/react-canvas';
 import { useEffect } from 'react';
 
 import PlayField from '../components/PlayField'
@@ -11,7 +9,7 @@ import authStore from '../authStore';
 import resourceStore from '../resourceStore';
 import { observer } from 'mobx-react';
 import Modal from '../components/Modal'
-
+import Flame from '../components/Flame'
 
 import api from '../api';
 
@@ -28,17 +26,17 @@ const Play = observer((props) => {
     const [soldResources, setsoldResources] = useState([]);
     const [earned, setearned] = useState(0);
     const [rocketScale, setrocketScale] = useState(1);
+    const [flameStatus, setflameStatus] = useState(0);
+    const [showLargeFlame, setshowLargeFlame] = useState(false)
+    const [rageTimer, setrageTimer] = useState(0)
 
 
     // Анимационные вопросы корабля и станции
-    const { RiveComponent, rive } = useRive({
-        src: '/flames/1.riv',
-        stateMachines: 'State Machine 1'
-    });
+
 
     const startFly = () => {
         setisFly(true)
-        rive.play();
+        setflameStatus(Math.floor(Math.random() * (300 - 100 + 1)) + 100)
     }
 
     useEffect(() => {
@@ -78,6 +76,21 @@ const Play = observer((props) => {
     useEffect(() => {
         // console.log('ОБНОВЛЯЮ FUEL');
         setfuel(Math.floor(authStore.user.fuel))
+        setmaxFuel(Math.floor(authStore.user.maxFuel))
+
+        const now = Date.now();
+        const lastRageTime = new Date(authStore.user.lastRage)
+        const lastRage = lastRageTime.getTime();
+        if (lastRage) {
+            if (now < lastRage + 30000) {
+                setrageTimer(30 - Math.floor((now - lastRage) / 1000))
+                setshowLargeFlame(true)
+            } else {
+                setshowLargeFlame(false)
+            }
+        } else {
+            setshowLargeFlame(false)
+        }
     }, [authStore.lastUserUpdate])
 
     useEffect(() => {
@@ -121,19 +134,24 @@ const Play = observer((props) => {
 
                 const res = await api.post("/user/sell");
                 setweight(0)
+                setflameStatus(0)
                 authStore.setUser(res.data)
                 setbalance(res.data.balance)
                 setisFly(false)
                 setspeed(0)
-                rive.stop();
-                rive.reset();
             }
         }
         arriveToStation()
     }, [isStation])
 
+    function preventCollapse(event) {
+        if (window.scrollY === 0) {
+            window.scrollTo(0, 2);
+        }
+    }
+
     return (
-        <div className='Play' style={{ '--animation-speed': `${20 / (speed / 100)}s` }}>
+        <div className='Play' onTouchStart={(e) => { preventCollapse(e) }} style={{ '--animation-speed': `${20 / (speed / 100)}s` }}>
             {
                 isStation && showModal ?
                     <Modal hideModal={setshowModal} resources={soldResources} earned={earned}>gav gav</Modal>
@@ -191,14 +209,31 @@ const Play = observer((props) => {
                 <div className="free_img Play_rocketAndFlames" style={{ transform: `scale(${Math.floor(rocketScale * 100) / 100})` }}>
                     <div className={`free_img Play_flames ${isStation && 'dnone'}`}>
                         <div className='Play_flames_inner'>
-                            <RiveComponent
-                                style={{ width: '66px', height: '100px' }}
-                            />
+                            <div class="free_img Play_flames_inner_1">
+                                <Flame flameStatus={flameStatus}></Flame>
+                            </div>
+                            <div class="free_img Play_flames_inner_2">
+                                <Flame flameStatus={flameStatus}></Flame>
+                            </div>
+                            {
+                                showLargeFlame
+                                    ?
+                                    <div class="free_img Play_flames_inner_L">
+                                        <Flame flameStatus={flameStatus}></Flame>
+                                    </div>
+                                    : <></>
+                            }
                         </div>
                     </div>
                     <div className="free_img Play_rocket">
                         <img src='/img/rocket.png' alt='decor' />
                     </div>
+                    {showLargeFlame
+                        ?
+                        <div className="free_img Play_rageTimer">
+                            {rageTimer}
+                        </div>
+                        : <></>}
                 </div>
                 <div className="free_img" style={{ opacity: isStation ? 0 : 1 }}>
                     <PlayField setRocketBigger={setRocketBigger} startFly={startFly} setweight={setweight} setfuel={setfuel} ></PlayField>
@@ -206,7 +241,6 @@ const Play = observer((props) => {
 
 
             </div>
-            <div className='Play_balansir'></div>
             <Navigation isBack={isStation} backFunc={() => { setisStation(false) }} ></Navigation>
         </div>
     )

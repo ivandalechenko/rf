@@ -72,8 +72,6 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
     const handleTouchStart = (e) => {
         const touch = e.targetTouches[0];
         setTouchPoints([{ x: touch.clientX, y: touch.clientY }]);
-        e.preventDefault();
-        e.stopPropagation();
     };
 
     const handleTouchMove = (e) => {
@@ -82,9 +80,6 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
             ...prevPoints,
             { x: touch.clientX, y: touch.clientY }
         ].slice(-20));
-        e.preventDefault();
-        e.stopPropagation();
-        window.Telegram.WebApp.expand()
     };
 
     const handleTouchEnd = () => {
@@ -118,8 +113,7 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
     }, []);
 
     const registerTap = (newCargo, newCargoWeight) => {
-        setRocketBigger()
-        triggerVibration(100);
+
         newCargoRef.current = newCargo;
         newCargoWeightRef.current = newCargoWeight;
         tapCount.current += 1;
@@ -164,6 +158,8 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger }) => {
     }
 
     const successSwipe = async () => {
+        setRocketBigger()
+        triggerVibration(100);
         let user = authStore.user;
         // console.log(user);
         startFly();

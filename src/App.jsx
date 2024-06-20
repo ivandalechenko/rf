@@ -13,6 +13,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Loader from './components/Loader'
 import Modal from './components/Modal'
+import { Flip, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function app() {
   const [afkFarm, setafkFarm] = useState(0);
@@ -52,16 +54,27 @@ function app() {
 
   const [login, setlogin] = useState();
 
-
-
   return (
     <>
       {
+
         authStore.isAuth ?
           <>
             {/* {JSON.stringify(window.Telegram.)} */}
             {authStore.isLoading && <Loader></Loader>}
             {afkFarm > 0 && <Modal afk={afkFarm} hideModal={hideAfk}></Modal>}
+            <ToastContainer
+              position="top-center"
+              autoClose={4000}
+              // hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable
+              pauseOnHover={false}
+              theme="dark"
+              transition={Flip} />
             <Router>
               <Routes>
                 <Route path="/" element={<Startup></Startup>} />

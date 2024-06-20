@@ -26,3 +26,21 @@ body {
 .dnone {
     display: none !important;
 }
+
+.Toastify__toast-theme--dark {
+    background: #1A1C29 !important;
+    --toastify-icon-color-info: white;
+    --toastify-icon-color-success: white;
+}
+
+.Toastify__close-button {
+    opacity: 0 !important;
+}
+
+.Toastify__progress-bar--success {
+    background: linear-gradient(135deg, #30BBEE, #C659FC) !important;
+}
+
+.Toastify__progress-bar--info {
+    background: linear-gradient(135deg, #30BBEE, #C659FC) !important;
+}
