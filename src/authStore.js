@@ -54,12 +54,16 @@ class AuthStore {
 
     async login(tgUserId, r = 0) {
         try {
+            this.setLoader(true);
             const response = await api.post('/user/login', { tgId: tgUserId, r })
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true);
             this.setUser(response.data.user);
         } catch (e) {
             console.log(e);
+        } finally {
+            this.setLoader(false);
+
         }
     }
 

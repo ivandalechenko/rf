@@ -91,15 +91,22 @@ function app() {
             </Router>
           </>
           :
+          <>
+            {
+              authStore.isLoading ?
+                <Loader></Loader>
+                : < div className='App_auth'>
+                  {/* {JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user.id)} */}
+                  залогиньтесь
+                  <input type="text" value={login} onChange={(e) => { setlogin(e.target.value) }} />
+                  <button style={{ color: "black" }} onClick={() => {
+                    authStore.login(login);
+                  }}>логин</button>
+                </div >
 
-          <div className='App_auth'>
-            {/* {JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user.id)} */}
-            залогиньтесь
-            <input type="text" value={login} onChange={(e) => { setlogin(e.target.value) }} />
-            <button style={{ color: "black" }} onClick={() => {
-              authStore.login(login);
-            }}>логин</button>
-          </div>
+            }
+          </>
+
       }
     </>
   )
