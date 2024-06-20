@@ -209,16 +209,16 @@ const Play = observer((props) => {
                 <div className="free_img Play_rocketAndFlames" style={{ transform: `scale(${Math.floor(rocketScale * 100) / 100})` }}>
                     <div className={`free_img Play_flames ${isStation && 'dnone'}`}>
                         <div className='Play_flames_inner'>
-                            <div class="free_img Play_flames_inner_1">
+                            <div className="free_img Play_flames_inner_1">
                                 <Flame flameStatus={flameStatus}></Flame>
                             </div>
-                            <div class="free_img Play_flames_inner_2">
+                            <div className="free_img Play_flames_inner_2">
                                 <Flame flameStatus={flameStatus}></Flame>
                             </div>
                             {
                                 showLargeFlame
                                     ?
-                                    <div class="free_img Play_flames_inner_L">
+                                    <div className="free_img Play_flames_inner_L">
                                         <Flame flameStatus={flameStatus}></Flame>
                                     </div>
                                     : <></>

@@ -7,7 +7,7 @@ import api from '../api';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Modal = ({ children, hideModal, resources, earned, upgrade, afk }) => {
+const Modal = ({ hideModal, resources, earned, upgrade, afk, quest }) => {
     const [hider, sethider] = useState(false);
     useEffect(() => {
         if (hider) {
@@ -38,6 +38,15 @@ const Modal = ({ children, hideModal, resources, earned, upgrade, afk }) => {
         if (upgrade.slug == 'rage 1') {
             navigate('/play')
         }
+    }
+
+    const getBounty = async () => {
+        console.log(quest);
+        window.Telegram.WebApp.openLink(quest.link)
+        const res = await api.post('/quest/activate', { slug: quest.slug })
+        authStore.setUser(res.data)
+        toast.success('Вы получили бонус')
+        hideModal()
     }
 
     return (
@@ -112,6 +121,28 @@ const Modal = ({ children, hideModal, resources, earned, upgrade, afk }) => {
                                     </div>
                                 </div>
                         }
+                    </>
+                }
+                {
+                    quest && <>
+                        <div className='Modal_top'>
+                            <div className='Modal_decor'>
+                                <img src={`/img/media/${quest.slug}.svg`} alt='decor' />
+                            </div>
+                            <div className='Modal_header mt16'>
+                                {quest.name}
+                            </div>
+
+                            <div className='Modal_price mt16'>
+                                <img src='/img/icons/money.svg' alt='decor' />
+                                +{quest.bounty}
+                            </div>
+                        </div>
+                        <div className='Modal_bot'>
+                            <div className='Modal_buttonColored mt32' onClick={() => { getBounty() }}>
+                                Follow
+                            </div>
+                        </div>
                     </>
                 }
                 {

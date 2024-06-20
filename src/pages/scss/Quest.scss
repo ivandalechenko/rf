@@ -43,7 +43,16 @@
         padding: 12px 20px;
         border-radius: 20px;
 
-        &_decor,
+        &_decor {
+            min-width: 40px;
+            min-height: 40px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 60px;
+        }
+
         &_status {
             min-width: 30px;
 

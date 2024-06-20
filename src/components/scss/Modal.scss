@@ -10,6 +10,20 @@
     justify-content: center;
     align-items: end;
 
+    &_decor {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+        border-radius: 100px;
+
+        img {
+            width: 50px;
+        }
+    }
+
     &_afk {
         &_wrapper {
             background-color: #252839;
