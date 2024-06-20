@@ -15,7 +15,7 @@ import Loader from './components/Loader'
 import Modal from './components/Modal'
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+const devMode = import.meta.env.VITE_REACT_APP_API_URL || false;
 function app() {
   const [afkFarm, setafkFarm] = useState(0);
 
@@ -62,7 +62,6 @@ function app() {
           <>
             {/* {JSON.stringify(window.Telegram.)} */}
             {authStore.isLoading && <Loader></Loader>}
-            {afkFarm > 0 && <Modal afk={afkFarm} hideModal={hideAfk}></Modal>}
             <ToastContainer
               position="bottom-center"
               autoClose={4000}
@@ -76,6 +75,7 @@ function app() {
               theme="dark"
               transition={Slide} />
             <Router>
+              {afkFarm > 0 && <Modal afk={afkFarm} hideModal={hideAfk}></Modal>}
               <Routes>
                 <Route path="/" element={<Startup></Startup>} />
                 <Route path="/play" element={<Play></Play>} />
@@ -85,8 +85,8 @@ function app() {
                 {/* <Route path="/logout" element={<div>
                   <button style={{ background: 'black', color: "white" }} onClick={() => {
                     authStore.logout();
-                  }}>logout</button>
-                </div>} /> */}
+                    }}>logout</button>
+                    </div>} /> */}
               </Routes>
             </Router>
           </>
@@ -95,15 +95,19 @@ function app() {
             {
               authStore.isLoading ?
                 <Loader></Loader>
-                : < div className='App_auth'>
-                  {/* {JSON.stringify(window.Telegram.WebApp.initDataUnsafe.user.id)} */}
-                  залогиньтесь
-                  <input type="text" value={login} onChange={(e) => { setlogin(e.target.value) }} />
-                  <button style={{ color: "black" }} onClick={() => {
-                    authStore.login(login);
-                  }}>логин</button>
-                </div >
+                :
+                <>{
 
+                  devMode ? <>
+                    залогиньтесь
+                    < input type="text" value={login} onChange={(e) => { setlogin(e.target.value) }} />
+                    <button style={{ color: "black" }} onClick={() => {
+                      authStore.login(login);
+                    }}>логин</button>
+                  </>
+                    : <></>
+                }
+                </>
             }
           </>
 

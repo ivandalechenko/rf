@@ -76,9 +76,9 @@ const Quest = (props) => {
                     Список заданий
                 </div>
                 {
-                    quests.map((quest) => {
+                    quests.map((quest, key) => {
                         if (!quest.daily) {
-                            return <div className='Quest_element'>
+                            return <div className='Quest_element' key={key}>
                                 <div className='Quest_element_decor'>
                                     <img src={`/img/media/${quest.slug}.svg`} alt='decor' />
                                 </div>
@@ -108,9 +108,7 @@ const Quest = (props) => {
                         }
                     })
                 }
-
             </div>
-
             <Navigation></Navigation>
         </div>
     )

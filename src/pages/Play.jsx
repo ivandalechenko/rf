@@ -100,12 +100,12 @@ const Play = observer((props) => {
     useEffect(() => {
         authStore.updateUser()
         setInterval(() => {
-            setrocketScale(prevScale => prevScale > 1.05 ? prevScale - 0.05 : prevScale)
+            setrocketScale(prevScale => prevScale > 1.03 ? prevScale - 0.05 : prevScale)
         }, 100);
     }, [])
 
     const setRocketBigger = () => {
-        setrocketScale(prevScale => prevScale > 1.5 ? prevScale : prevScale > 1.3 ? prevScale + 0.05 : prevScale + 0.10)
+        setrocketScale(prevScale => prevScale > 1.5 ? prevScale : prevScale > 1.3 ? prevScale + 0.03 : prevScale + 0.05)
     }
 
     useEffect(() => {
@@ -157,7 +157,7 @@ const Play = observer((props) => {
     }
 
     return (
-        <div className='Play' onTouchStart={(e) => { preventCollapse(e) }} style={{ '--animation-speed': `${20 / (speed / 100)}s` }}>
+        <div className='Play' onTouchStart={(e) => { preventCollapse(e) }} style={{ '--animation-speed': `${20 / ((speed / 100))}s` }}>
             {
                 isStation && showModal ?
                     <Modal hideModal={setshowModal} resources={soldResources} earned={earned}>gav gav</Modal>
@@ -212,6 +212,10 @@ const Play = observer((props) => {
                 <div className='free_img Play_station'>
                     <img src='/img/station.png' className={`${!isStation && 'dnone'}`} alt='decor' />
                 </div>
+
+                <div className="free_img" style={{ opacity: isStation ? 0 : 1 }}>
+                    <PlayField setRocketBigger={setRocketBigger} startFly={startFly} setweight={setweight} setfuel={setfuel} isStation={isStation} ></PlayField>
+                </div>
                 <div className="free_img Play_rocketAndFlames" style={{ transform: `scale(${Math.floor(rocketScale * 100) / 100})` }}>
                     <div className={`free_img Play_flames ${isStation && 'dnone'}`}>
                         <div className='Play_flames_inner'>
@@ -240,9 +244,6 @@ const Play = observer((props) => {
                             {rageTimer}
                         </div>
                         : <></>}
-                </div>
-                <div className="free_img" style={{ opacity: isStation ? 0 : 1 }}>
-                    <PlayField setRocketBigger={setRocketBigger} startFly={startFly} setweight={setweight} setfuel={setfuel} isStation={isStation} ></PlayField>
                 </div>
 
 

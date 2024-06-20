@@ -36,6 +36,8 @@
 
     &_rocketAndFlames {
         transition: transform 200ms;
+        pointer-events: none;
+        top: 50px;
     }
 
     &_flames {

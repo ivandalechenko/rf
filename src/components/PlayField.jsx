@@ -32,8 +32,8 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
         const rocketH = 200;
         const rocketW = 140;
 
-        const rocketTop = window.innerHeight / 2 - rocketH / 2;
-        const rocketBot = window.innerHeight / 2 + rocketH / 2;
+        const rocketTop = window.innerHeight / 2 - rocketH / 2 + 50;
+        const rocketBot = window.innerHeight / 2 + rocketH / 2 + 50;
         const rocketLeft = window.innerWidth / 2 - rocketW / 2;
         const rocketRight = window.innerWidth / 2 + rocketW / 2;
         if (touchPoints.length > 0) {
@@ -142,9 +142,7 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
         // console.log('lastTapTimeout.currentпосле установки:', lastTapTimeout.current);
     }
 
-    const updateUserCargoAndFuel = async (resourceType, fuelSpent) => {
-        let user = authStore.user;
-        const resources = await resourceStore.getResources();
+    const updateUserCargoAndFuel = (user, resources, resourceType, fuelSpent) => {
         let newCargo = user.cargo;
         let newCargoWeight = user.cargoWeight;
         let newFuel = Math.floor(user.fuel - fuelSpent);
@@ -161,8 +159,9 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
         user.fuel = newFuel
         setfuel(newFuel)
         setweight(newCargoWeight)
-        authStore.setUser(user)
+        // authStore.setUser(user)
         registerTap(newCargo, newCargoWeight)
+        return user
     }
 
     const successSwipe = async () => {
@@ -176,17 +175,16 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
         const lLevel = authStore.user.luck;
         const resources = await resourceStore.getResources();
         // console.log('user');
-        // console.log(user);
+        console.log(user);
         // console.log('res');
         // console.log(resources);
         // console.log(`-`);
         // console.log(`Уровень копания: ${mLevel} Уровень удачи: ${lLevel}`);
         for (let i = 0; i < user.minePower; i++) {
-            let user = authStore.user;
             if (user.fuel >= 1 && user.cargoWeight < user.cargoCapacity) {
                 if (mLevel == 0) {
                     resourceType = 1;
-                    await updateUserCargoAndFuel(resourceType, 1);
+                    user = updateUserCargoAndFuel(user, resources, resourceType, 1);
                 } else {
                     let randForThisSwipe = getRandomValue(1, 100);
                     // console.log(`Зарандомил число ${randForThisSwipe}`);
@@ -194,15 +192,15 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
                     for (let resourceLevel = 1; resourceLevel <= mLevel + 1; resourceLevel++) {
 
                         const resource = resources.find(obj => obj['level'] == resourceLevel);
-                        console.log("resource");
-                        console.log(resource);
+                        // console.log("resource");
+                        // console.log(resource);
                         const resourceLuckLevelsList = resource.canMineLevel.find(obj => obj['canMineLevel'] == mLevel);
-                        console.log("resourceLuckLevelsList");
-                        console.log(resourceLuckLevelsList);
+                        // console.log("resourceLuckLevelsList");
+                        // console.log(resourceLuckLevelsList);
                         const chanceForThisResource = resourceLuckLevelsList.luckLevel.find(obj => obj['luckLevel'] == lLevel);
-                        console.log(`lLevel: ${lLevel}`);
-                        console.log("chanceForThisResource");
-                        console.log(chanceForThisResource);
+                        // console.log(`lLevel: ${lLevel}`);
+                        // console.log("chanceForThisResource");
+                        // console.log(chanceForThisResource);
 
 
                         const percent = chanceForThisResource.percent
@@ -215,17 +213,17 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
                         if (randForThisSwipe <= 0) {
                             // console.log(`Выпало "${resource.name}"`);
                             // console.log(`-`);
-                            await updateUserCargoAndFuel(resourceLevel, 1);
+                            user = updateUserCargoAndFuel(user, resources, resourceLevel, 1);
                             resourceType = resourceLevel;
                             resourceLevel = 999;
                         }
                     }
                 }
 
-                if (viewResources.length < 25 || (resourceType > 2)) {
+                if (viewResources.length < 30) {
                     // Отображение ресурсов ниже
                     let res = viewResources;
-                    const speed = getRandomValueFloat2(1, 4);
+                    const speed = getRandomValueFloat2(0.5, 1.5);
                     res.push({ type: resourceType, speed, spawnX: getRandomValue(-40, 40), key: Math.random() });
                     setviewResources(res)
                     setTimeout(() => {
@@ -236,7 +234,7 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
                 }
             }
         }
-
+        authStore.setUser(user)
 
     }
     function getRandomValue(min, max) {
