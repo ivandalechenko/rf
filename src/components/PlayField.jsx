@@ -193,13 +193,18 @@ const PlayField = ({ startFly, setweight, setfuel, setRocketBigger, isStation })
                     // Цикл проходки по ресурсам
                     for (let resourceLevel = 1; resourceLevel <= mLevel + 1; resourceLevel++) {
 
-                        const resource = resources.find(obj => obj['level'] === resourceLevel);
-                        // console.log("resource");
-                        // console.log(resource);
-                        const resourceLuckLevelsList = resource.canMineLevel.find(obj => obj['canMineLevel'] === mLevel);
-                        // console.log("resourceLuckLevelsList");
-                        // console.log(resourceLuckLevelsList);
-                        const chanceForThisResource = resourceLuckLevelsList.luckLevel.find(obj => obj['luckLevel'] === lLevel);
+                        const resource = resources.find(obj => obj['level'] == resourceLevel);
+                        console.log("resource");
+                        console.log(resource);
+                        const resourceLuckLevelsList = resource.canMineLevel.find(obj => obj['canMineLevel'] == mLevel);
+                        console.log("resourceLuckLevelsList");
+                        console.log(resourceLuckLevelsList);
+                        const chanceForThisResource = resourceLuckLevelsList.luckLevel.find(obj => obj['luckLevel'] == lLevel);
+                        console.log(`lLevel: ${lLevel}`);
+                        console.log("chanceForThisResource");
+                        console.log(chanceForThisResource);
+
+
                         const percent = chanceForThisResource.percent
 
                         // console.log("chanceForThisResource");
